@@ -1,7 +1,7 @@
 <div class="weekview">
-    <ion-slide-box class="weekview-slide" on-slide-changed="slideChanged($index)" does-continue="true"
+    <ion-super-slide-box  direction="{{direction}}" class="weekview-slide" on-slide-changed="slideChanged($index)" does-continue="true"
                    show-pager="false" delegate-handle="weekview-slide">
-        <ion-slide ng-repeat="view in views track by $index">
+        <ion-super-slide ng-repeat="view in views track by $index">
             <table class="table table-bordered table-fixed weekview-header">
                 <thead>
                 <tr>
@@ -84,6 +84,6 @@
                     </table>
                 </ion-content>
             </div>
-        </ion-slide>
-    </ion-slide-box>
+        </ion-super-slide>
+    </ion-super-slide-box>
 </div>

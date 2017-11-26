@@ -1,4 +1,4 @@
-angular.module('ui.rCalendar', [])
+angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
     .constant('calendarConfig', {
         formatDay: 'dd',
         formatDayHeader: 'EEE',
@@ -358,7 +358,8 @@ angular.module('ui.rCalendar', [])
                 eventSelected: '&',
                 timeSelected: '&',
                 titleChanged: '&',
-                isDateDisabled: '&'
+                isDateDisabled: '&',
+                direction : '='
             },
             require: ['calendar', '?^ngModel'],
             controller: 'ui.rCalendar.CalendarController',

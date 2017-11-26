@@ -1,5 +1,5 @@
 angular.module("ui.rCalendar.tpls", ["templates/rcalendar/calendar.html","templates/rcalendar/day.html","templates/rcalendar/displayEvent.html","templates/rcalendar/month.html","templates/rcalendar/monthviewDisplayEvent.html","templates/rcalendar/monthviewEventDetail.html","templates/rcalendar/week.html"]);
-angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
+angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
     .constant('calendarConfig', {
         formatDay: 'dd',
         formatDayHeader: 'EEE',
@@ -359,7 +359,8 @@ angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
                 eventSelected: '&',
                 timeSelected: '&',
                 titleChanged: '&',
-                isDateDisabled: '&'
+                isDateDisabled: '&',
+                direction : '='
             },
             require: ['calendar', '?^ngModel'],
             controller: 'ui.rCalendar.CalendarController',
@@ -1292,9 +1293,9 @@ angular.module("templates/rcalendar/displayEvent.html", []).run(["$templateCache
 angular.module("templates/rcalendar/month.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/rcalendar/month.html",
     "<div>\n" +
-    "    <ion-slide-box class=\"monthview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
+    "    <ion-super-slide-box direction=\"{{direction}}\" class=\"monthview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
     "                   show-pager=\"false\" delegate-handle=\"monthview-slide\">\n" +
-    "        <ion-slide ng-repeat=\"view in views track by $index\">\n" +
+    "        <ion-super-slide ng-repeat=\"view in views track by $index\">\n" +
     "            <table ng-if=\"$index===currentViewIndex\" class=\"table table-bordered table-fixed monthview-datetable\">\n" +
     "                <thead>\n" +
     "                <tr>\n" +
@@ -1326,8 +1327,8 @@ angular.module("templates/rcalendar/month.html", []).run(["$templateCache", func
     "                </tr>\n" +
     "                </tbody>\n" +
     "            </table>\n" +
-    "        </ion-slide>\n" +
-    "    </ion-slide-box>\n" +
+    "        </ion-super-slide>\n" +
+    "    </ion-super-slide-box>\n" +
     "    <div ng-include=\"::eventDetailTemplateUrl\"></div>\n" +
     "</div>\n" +
     "");
@@ -1360,9 +1361,9 @@ angular.module("templates/rcalendar/monthviewEventDetail.html", []).run(["$templ
 angular.module("templates/rcalendar/week.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/rcalendar/week.html",
     "<div class=\"weekview\">\n" +
-    "    <ion-slide-box class=\"weekview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
+    "    <ion-super-slide-box  direction=\"{{direction}}\" class=\"weekview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
     "                   show-pager=\"false\" delegate-handle=\"weekview-slide\">\n" +
-    "        <ion-slide ng-repeat=\"view in views track by $index\">\n" +
+    "        <ion-super-slide ng-repeat=\"view in views track by $index\">\n" +
     "            <table class=\"table table-bordered table-fixed weekview-header\">\n" +
     "                <thead>\n" +
     "                <tr>\n" +
@@ -1445,7 +1446,7 @@ angular.module("templates/rcalendar/week.html", []).run(["$templateCache", funct
     "                    </table>\n" +
     "                </ion-content>\n" +
     "            </div>\n" +
-    "        </ion-slide>\n" +
-    "    </ion-slide-box>\n" +
+    "        </ion-super-slide>\n" +
+    "    </ion-super-slide-box>\n" +
     "</div>");
 }]);
