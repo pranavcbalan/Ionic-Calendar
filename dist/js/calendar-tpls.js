@@ -1,5 +1,5 @@
 angular.module("ui.rCalendar.tpls", ['ionic.ui.superSlideBox',"templates/rcalendar/calendar.html","templates/rcalendar/day.html","templates/rcalendar/displayEvent.html","templates/rcalendar/month.html","templates/rcalendar/monthviewDisplayEvent.html","templates/rcalendar/monthviewEventDetail.html","templates/rcalendar/week.html"]);
-angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
+angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
     .constant('calendarConfig', {
         formatDay: 'dd',
         formatDayHeader: 'EEE',
