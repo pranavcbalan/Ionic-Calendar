@@ -1,4 +1,4 @@
-angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
+angular.module('ui.rCalendar', [])
     .constant('calendarConfig', {
         formatDay: 'dd',
         formatDayHeader: 'EEE',
