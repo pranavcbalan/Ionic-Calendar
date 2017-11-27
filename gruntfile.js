@@ -56,7 +56,7 @@ module.exports = function (grunt) {
         concat: {
             dist_tpls: {
                 options: {
-                    banner: 'angular.module("ui.rCalendar.tpls", [' + grunt.file.expand('templates/**/*.html').map(enquote) + ']);\n'
+                    banner: 'angular.module("ui.rCalendar.tpls", [\'ionic.ui.superSlideBox\',' + grunt.file.expand('templates/**/*.html').map(enquote) + ']);\n'
                 },
                 src: ['build/src/**/calendar.js',
                     'build/templates/**/*.html.js'

@@ -1,4 +1,4 @@
-angular.module("ui.rCalendar.tpls", ["templates/rcalendar/calendar.html","templates/rcalendar/day.html","templates/rcalendar/displayEvent.html","templates/rcalendar/month.html","templates/rcalendar/monthviewDisplayEvent.html","templates/rcalendar/monthviewEventDetail.html","templates/rcalendar/week.html"]);
+angular.module("ui.rCalendar.tpls", ['ionic.ui.superSlideBox',"templates/rcalendar/calendar.html","templates/rcalendar/day.html","templates/rcalendar/displayEvent.html","templates/rcalendar/month.html","templates/rcalendar/monthviewDisplayEvent.html","templates/rcalendar/monthviewEventDetail.html","templates/rcalendar/week.html"]);
 angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
     .constant('calendarConfig', {
         formatDay: 'dd',
@@ -360,7 +360,7 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
                 timeSelected: '&',
                 titleChanged: '&',
                 isDateDisabled: '&',
-                direction : '='
+                direction: '='
             },
             require: ['calendar', '?^ngModel'],
             controller: 'ui.rCalendar.CalendarController',
@@ -388,6 +388,9 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
             replace: true,
             templateUrl: 'templates/rcalendar/month.html',
             require: ['^calendar', '?^ngModel'],
+            scope: {
+                direction: '='
+            },
             link: function (scope, element, attrs, ctrls) {
                 var ctrl = ctrls[0],
                     ngModelCtrl = ctrls[1];
@@ -678,7 +681,7 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
                         }
                     }
 
-                    if(scope.autoSelect) {
+                    if (scope.autoSelect) {
                         var findSelected = false;
                         for (r = 0; r < 42; r += 1) {
                             if (dates[r].selected) {
@@ -728,6 +731,9 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
             replace: true,
             templateUrl: 'templates/rcalendar/week.html',
             require: '^calendar',
+            scope: {
+                direction: '='
+            },
             link: function (scope, element, attrs, ctrl) {
                 scope.formatWeekViewDayHeader = ctrl.formatWeekViewDayHeader;
                 scope.formatHourColumn = ctrl.formatHourColumn;
@@ -1030,6 +1036,9 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
             replace: true,
             templateUrl: 'templates/rcalendar/day.html',
             require: '^calendar',
+            scope: {
+                direction: '='
+            },
             link: function (scope, element, attrs, ctrl) {
                 scope.formatHourColumn = ctrl.formatHourColumn;
 
@@ -1213,18 +1222,18 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
 angular.module("templates/rcalendar/calendar.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/rcalendar/calendar.html",
     "<div class=\"calendar-container\" ng-switch=\"calendarMode\">\n" +
-    "    <dayview ng-switch-when=\"day\"></dayview>\n" +
-    "    <monthview ng-switch-when=\"month\"></monthview>\n" +
-    "    <weekview ng-switch-when=\"week\"></weekview>\n" +
+    "    <dayview direction=\"direction\" ng-switch-when=\"day\"></dayview>\n" +
+    "    <monthview direction=\"direction\"  ng-switch-when=\"month\"></monthview>\n" +
+    "    <weekview direction=\"direction\"  ng-switch-when=\"week\"></weekview>\n" +
     "</div>");
 }]);
 
 angular.module("templates/rcalendar/day.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/rcalendar/day.html",
     "<div class=\"dayview\">\n" +
-    "    <ion-slide-box class=\"dayview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
+    "    <ion-super-slide-box  direction=\"direction\" class=\"dayview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
     "                   show-pager=\"false\" delegate-handle=\"dayview-slide\">\n" +
-    "        <ion-slide ng-repeat=\"view in views track by $index\">\n" +
+    "        <ion-super-slide ng-repeat=\"view in views track by $index\">\n" +
     "            <div class=\"dayview-allday-table\">\n" +
     "                <div class=\"dayview-allday-label\" ng-bind=\"::allDayLabel\"></div>\n" +
     "                <ion-content class=\"dayview-allday-content-wrapper\" has-bouncing=\"false\" overflow-scroll=\"false\">\n" +
@@ -1279,8 +1288,8 @@ angular.module("templates/rcalendar/day.html", []).run(["$templateCache", functi
     "                    </tbody>\n" +
     "                </table>\n" +
     "            </ion-content>\n" +
-    "        </ion-slide>\n" +
-    "    </ion-slide-box>\n" +
+    "        </ion-super-slide>\n" +
+    "    </ion-super-slide-box>\n" +
     "</div>\n" +
     "");
 }]);
@@ -1293,7 +1302,7 @@ angular.module("templates/rcalendar/displayEvent.html", []).run(["$templateCache
 angular.module("templates/rcalendar/month.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/rcalendar/month.html",
     "<div>\n" +
-    "    <ion-super-slide-box direction=\"{{direction}}\" class=\"monthview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
+    "    <ion-super-slide-box direction=\"direction\" class=\"monthview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
     "                   show-pager=\"false\" delegate-handle=\"monthview-slide\">\n" +
     "        <ion-super-slide ng-repeat=\"view in views track by $index\">\n" +
     "            <table ng-if=\"$index===currentViewIndex\" class=\"table table-bordered table-fixed monthview-datetable\">\n" +
@@ -1361,7 +1370,7 @@ angular.module("templates/rcalendar/monthviewEventDetail.html", []).run(["$templ
 angular.module("templates/rcalendar/week.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/rcalendar/week.html",
     "<div class=\"weekview\">\n" +
-    "    <ion-super-slide-box  direction=\"{{direction}}\" class=\"weekview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
+    "    <ion-super-slide-box  direction=\"direction\" class=\"weekview-slide\" on-slide-changed=\"slideChanged($index)\" does-continue=\"true\"\n" +
     "                   show-pager=\"false\" delegate-handle=\"weekview-slide\">\n" +
     "        <ion-super-slide ng-repeat=\"view in views track by $index\">\n" +
     "            <table class=\"table table-bordered table-fixed weekview-header\">\n" +
