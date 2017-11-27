@@ -359,7 +359,7 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
                 timeSelected: '&',
                 titleChanged: '&',
                 isDateDisabled: '&',
-                direction : '='
+                direction: '='
             },
             require: ['calendar', '?^ngModel'],
             controller: 'ui.rCalendar.CalendarController',
@@ -387,6 +387,9 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
             replace: true,
             templateUrl: 'templates/rcalendar/month.html',
             require: ['^calendar', '?^ngModel'],
+            scope: {
+                direction: '='
+            },
             link: function (scope, element, attrs, ctrls) {
                 var ctrl = ctrls[0],
                     ngModelCtrl = ctrls[1];
@@ -677,7 +680,7 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
                         }
                     }
 
-                    if(scope.autoSelect) {
+                    if (scope.autoSelect) {
                         var findSelected = false;
                         for (r = 0; r < 42; r += 1) {
                             if (dates[r].selected) {
@@ -727,6 +730,9 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
             replace: true,
             templateUrl: 'templates/rcalendar/week.html',
             require: '^calendar',
+            scope: {
+                direction: '='
+            },
             link: function (scope, element, attrs, ctrl) {
                 scope.formatWeekViewDayHeader = ctrl.formatWeekViewDayHeader;
                 scope.formatHourColumn = ctrl.formatHourColumn;
@@ -1029,6 +1035,9 @@ angular.module('ui.rCalendar', ['ionic.ui.superSlideBox'])
             replace: true,
             templateUrl: 'templates/rcalendar/day.html',
             require: '^calendar',
+            scope: {
+                direction: '='
+            },
             link: function (scope, element, attrs, ctrl) {
                 scope.formatHourColumn = ctrl.formatHourColumn;
 

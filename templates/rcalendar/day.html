@@ -1,7 +1,7 @@
 <div class="dayview">
-    <ion-slide-box class="dayview-slide" on-slide-changed="slideChanged($index)" does-continue="true"
+    <ion-super-slide-box  direction="direction" class="dayview-slide" on-slide-changed="slideChanged($index)" does-continue="true"
                    show-pager="false" delegate-handle="dayview-slide">
-        <ion-slide ng-repeat="view in views track by $index">
+        <ion-super-slide ng-repeat="view in views track by $index">
             <div class="dayview-allday-table">
                 <div class="dayview-allday-label" ng-bind="::allDayLabel"></div>
                 <ion-content class="dayview-allday-content-wrapper" has-bouncing="false" overflow-scroll="false">
@@ -56,6 +56,6 @@
                     </tbody>
                 </table>
             </ion-content>
-        </ion-slide>
-    </ion-slide-box>
+        </ion-super-slide>
+    </ion-super-slide-box>
 </div>

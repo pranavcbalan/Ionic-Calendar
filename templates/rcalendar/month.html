@@ -1,5 +1,5 @@
 <div>
-    <ion-super-slide-box direction="{{direction}}" class="monthview-slide" on-slide-changed="slideChanged($index)" does-continue="true"
+    <ion-super-slide-box direction="direction" class="monthview-slide" on-slide-changed="slideChanged($index)" does-continue="true"
                    show-pager="false" delegate-handle="monthview-slide">
         <ion-super-slide ng-repeat="view in views track by $index">
             <table ng-if="$index===currentViewIndex" class="table table-bordered table-fixed monthview-datetable">
