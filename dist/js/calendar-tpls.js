@@ -388,9 +388,6 @@ angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
             replace: true,
             templateUrl: 'templates/rcalendar/month.html',
             require: ['^calendar', '?^ngModel'],
-            scope: {
-                direction: '='
-            },
             link: function (scope, element, attrs, ctrls) {
                 var ctrl = ctrls[0],
                     ngModelCtrl = ctrls[1];
@@ -731,9 +728,6 @@ angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
             replace: true,
             templateUrl: 'templates/rcalendar/week.html',
             require: '^calendar',
-            scope: {
-                direction: '='
-            },
             link: function (scope, element, attrs, ctrl) {
                 scope.formatWeekViewDayHeader = ctrl.formatWeekViewDayHeader;
                 scope.formatHourColumn = ctrl.formatHourColumn;
@@ -1036,9 +1030,6 @@ angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
             replace: true,
             templateUrl: 'templates/rcalendar/day.html',
             require: '^calendar',
-            scope: {
-                direction: '='
-            },
             link: function (scope, element, attrs, ctrl) {
                 scope.formatHourColumn = ctrl.formatHourColumn;
 
