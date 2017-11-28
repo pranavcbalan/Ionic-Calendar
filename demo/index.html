@@ -46,7 +46,7 @@
         </ion-nav-buttons>
 
         <ion-content scroll="false" class="main-content">
-            <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="calendar.eventSource"
+            <calendar direction="'vertical'" ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="calendar.eventSource"
                       range-changed="reloadSource(startTime, endTime)"
                       event-selected="onEventSelected(event)" title-changed="onViewTitleChanged(title)"
                       time-selected="onTimeSelected(selectedTime, events, disabled)" step="30"></calendar>

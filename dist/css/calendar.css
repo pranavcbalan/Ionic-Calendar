@@ -35,6 +35,7 @@
     padding: 8px;
     line-height: 1.428571429;
     vertical-align: top;
+    padding: 20px 10px !important;
 }
 
 .table > thead > tr > th {
@@ -75,7 +76,7 @@
 
 .event-detail-container {
     border-top: 2px darkgrey solid;
-    margin-top: 262px;
+    margin-top: 362px;
 }
 
 .event-detail {
@@ -183,7 +184,7 @@
 }
 
 .monthview-slide {
-    height: 306px;
+    height: 366px;
 }
 
 .weekview-slide, .weekview, .dayview-slide, .dayview {
